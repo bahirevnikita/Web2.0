@@ -18,12 +18,12 @@ function two(){
 	    console.log("Треугольник не существует");
 	}
 	else{
-	     let p = (a+b+c)/2;
-	     let s = Math.sqrt(p*(p-a)*(p-b)*(p-c))
-	     console.log("Треугольник существует:");
-	     console.log("Периметр = ", 2*p);
-	     console.log("Площадь = ", s);
-	     console.log("Соотношение = ", 2*p/s);
+	    let p = (a+b+c)/2;
+	    let s = Math.sqrt(p*(p-a)*(p-b)*(p-c))
+	    console.log("Треугольник существует:");
+	    console.log("Периметр = ", 2*p);
+	    console.log("Площадь = ", s);
+	    console.log("Соотношение = ", 2*p/s);
 	}
 }
 
@@ -32,22 +32,22 @@ function three(){
 	let n = +prompt("Введите желаемое число");
 	for(let i = 0; i <= n; i++)
 	{
-	     if (i == 0)
-	     {
-	         console.log(i, "buzz")
-	     }
+	    if (i == 0)
+	    {
+	        console.log(i, "buzz")
+	    }
 	     if ((i % 2 == 0) && (i % 10 != 0))
-			 {
-	         console.log(i, "buzz")
-	     }
-	     if(((i % 10 == 0) || (i % 10 == 5)) && (i != 0))
-	     {
-	         console.log(i, "fizz buzz")
-	     }
-	     else if (i % 2 == 1)
-			 {
-	         console.log(i, "fizz")
-	     }
+			{
+	        console.log(i, "buzz")
+	    }
+	    if(((i % 10 == 0) || (i % 10 == 5)) && (i != 0))
+	    {
+	        console.log(i, "fizz buzz")
+	    }
+	    else if (i % 2 == 1)
+			{
+	        console.log(i, "fizz")
+	    }
 	}
 }
 
@@ -57,19 +57,19 @@ function four(){
 	let s ="";
 	for (let i = 1; i <= n; i++)
 	{
-	   for(let k =0;k<i;k++){
+	    for(let k =0;k<i;k++){
 	        
-	       if (i % 2 == 1){
-	           s=s+"*";
-	       }
-	       else if ((i % 2 == 0) && (i != n)){
-	           s=s+"#";
-	       }    
-	     }
-	     if (i == n){
-	         s = s + "||";
-	     }
-	     s = s+"\n"
+	        if (i % 2 == 1){
+	            s=s+"*";
+	        }
+	        else if ((i % 2 == 0) && (i != n)){
+	            s=s+"#";
+	        }    
+	    }
+	    if (i == n){
+	        s = s + "||";
+	    }
+	    s = s+"\n"
 	    
 	}
 	console.log(s);
@@ -77,35 +77,35 @@ function four(){
 
 // //Пятая задача
 function five(){
-	 let x = 44;
-	 let n = +prompt("Попробуйте угадать число");
-	 do{
-	     if (x > n){
-	         n = +prompt("Ваше число меньше, попробуйте ввести другое число");
-	     }
-	     if (x < n){
-	         n = +prompt("Ваше число больше, попробуйте ввести другое число");
-	     }
-	     if (x == n){
-	         console.log("Число угадано");
-	     }
+	let x = 44;
+	let n = +prompt("Попробуйте угадать число");
+	do{
+	    if (x > n){
+	        n = +prompt("Ваше число меньше, попробуйте ввести другое число");
+	    }
+	    if (x < n){
+	        n = +prompt("Ваше число больше, попробуйте ввести другое число");
+	    }
+	    if (x == n){
+	        console.log("Число угадано");
+	    }
 	
-	 }while(n !== x)
+	}while(n !== x)
 }
 
 //Шесая задача
 function six(){
-	 for (let i =0; i < 10; i++){
-	     let n = +prompt("Введите число n");
-	     let x = +prompt("Введите число x");
-	     let y = +prompt("Введите число y");
-	     if ((n % x == 0) && (n % y == 0)){
-	         console.log("n = ", n, "x = ", x, "y = ", y, "=> true");
-	     }
-	     else{
-	         console.log("n = ", n, "x = ", x, " y = ", y, "=> false");
-	     }
-	 }
+	for (let i =0; i < 10; i++){
+	    let n = +prompt("Введите число n");
+	    let x = +prompt("Введите число x");
+	    let y = +prompt("Введите число y");
+	    if ((n % x == 0) && (n % y == 0)){
+	        console.log("n = ", n, "x = ", x, "y = ", y, "=> true");
+	    }
+	    else{
+	        console.log("n = ", n, "x = ", x, " y = ", y, "=> false");
+	    }
+	}
 }
 
 
