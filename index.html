@@ -5,15 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <header >
+        <button class="sign_button" id="sign_butt">Registration</button>
+    </header>
+    <form class="sign_form" id="sign_form">
+        <fieldset>
+            <legend>Registration</legend>
+            <fieldset>
+                <label>
+                    Email:
+                    <input  id="email_input" type="email" required>
+                </label>
+            </fieldset>
+            <fieldset>
+                <label>
+                    Password:
+                    <input id="pass_input" type="password" minlength="6" maxlength="32" placeholder="от 6 до 32 символов" required>
+                    <button type="button" id="show_pass_butt">Показать пароль</button>
+                </label>
+            </fieldset>
+            <div>
+                <button type="button" id="cancel_butt">Cancel</button>
+                <button id="login_butt">Login</button>
+            </div>
+            
+            <p class="form_error" id="iError" hidden>
+                Минимальная длинна пароля - 6 символов!
+            </p>
+        </fieldset>
+    </form>
+
     <h1>Бахирев Никита Георгиевич</h1>
-    <h2>Лабараторная №2</h2>
-    <button onclick="button_1()"> Задание 1</button>
-    <button onclick="button_2()">Задание 2</button>
-    <button onclick="button_3()">Задание 3</button>
-    <button onclick="four(+prompt('min'), +prompt('max'))">Задание 4</button>
-    <button onclick="button_5()">Задание 5</button>
-    <script src = "main.js"></script>
+    <div>
+        <h2>Лабараторная №2</h2>
+        <button onclick="button_1()"> Задача №1</button>
+        <button onclick="button_2()">Задача №2</button>
+        <button onclick="button_3()">Задача №3</button>
+        <button onclick="four(+prompt('min'), +prompt('max'))">Задача №4</button>
+        <button onclick="button_5()">Задача №5</button>
+        <script src = "main.js"></script>
+    </div>
 </body>
 </html>
