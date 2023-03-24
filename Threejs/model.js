@@ -42,8 +42,11 @@ renderer.setSize(div.clientWidth, div.clientHeight);
 div.appendChild(renderer.domElement);
 renderer.shadowMap.enabled = true;
 
-//scene.background = new THREE.Color('gray');
+// scene.background = new THREE.Color('gray');
 //scene.fog = new THREE.Fog('gray', 1, 5);
+// scene.castShadow = true;
+// scene.receiveShadow = true;
+
 
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
 hemiLight.position.set(0, 200, 0);
@@ -70,35 +73,37 @@ plane.receiveShadow = true;
 scene.add(plane);
 
 // //Пункт 4
-// const wallBG = new THREE.BufferGeometry();
-// // create a simple square shape. We duplicate the top left and bottom right
-// // vertices because each vertex needs to appear once per triangle.
-// const vertices = new Float32Array( [
-// 	-1.0, -1.0,  0.0,
-// 	 1.0, -1.0,  0.0,
-// 	 1.0,  1.0,  0.0,
+const wallBG = new THREE.BufferGeometry();
+// create a simple square shape. We duplicate the top left and bottom right
+// vertices because each vertex needs to appear once per triangle.
+const vertices = new Float32Array( [
+	0.0, -1.0,  -1.0,
+	 0.0, -1.0,  1.0,
+	 0.0,  1.0,  1.0,
 
-// 	 1.0,  1.0,  0.0,
-// 	-1.0,  1.0,  0.0,
-// 	-1.0, -1.0,  0.0,
+	 0.0,  1.0,  1.0,
+	0.0,  1.0,  -1.0,
+	0.0, -1.0,  -1.0,
 
-// 	 1.0,  1.0,  0.0,
-//    1.0, -1.0,  0.0,
-//    -1.0, -1.0,  0.0,
+	 0.0,  1.0,  1.0,
+   0.0, -1.0,  1.0,
+   0.0, -1.0,  -1.0,
 
-// 	-1.0, -1.0,  0.0,
-//   -1.0,  1.0,  0.0,
-//    1.0,  1.0,  0.0
-// ] );
+	0.0, -1.0,  -1.0,
+  0.0,  1.0,  -1.0,
+  0.0,  1.0,  1.0
+] );
 
-// // itemSize = 3 because there are 3 values (components) per vertex
-// wallBG.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
-// wallBG.computeVertexNormals();
-// const material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
-// wall = new THREE.Mesh( wallBG, material );
-// wall.receiveShadow = true;
-// wall.castShadow = true;
-// scene.add(wall);
+// itemSize = 3 because there are 3 values (components) per vertex
+wallBG.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
+wallBG.computeVertexNormals();
+const material = new THREE.MeshPhongMaterial( { color: 0x808080 } );
+wall = new THREE.Mesh( wallBG, material );
+wall.receiveShadow = true;
+wall.castShadow = true;
+scene.add(wall);
+wall.translateX(-0.5);
+wall.scale.set(1.2, 1.2, 1.2);
 
 //Пункт 5 Сфера 
 const sphereGeometry = new THREE.SphereGeometry( 0.5, 32, 32 );
@@ -121,36 +126,22 @@ const verticesP = new Float32Array( [
 0.0, 2.0, 0.0, 
 1.0, 0.0, -1.0,
 
-// 1.0, 0.0, -1.0,
-// 0.0, 2.0, 0.0, 
-// -1.0, 0.0, -1.0,
-
 1.0, 0.0, -1.0,
 0.0, 2.0, 0.0, 
 1.0, 0.0, 1.0,
-
-// 1.0, 0.0, 1.0,
-// 0.0, 2.0, 0.0, 
-// 1.0, 0.0, -1.0,
 
 -1.0, 0.0, 1.0,
 0.0, 2.0, 0.0, 
 -1.0, 0.0, -1.0,
 
-// -1.0, 0.0, -1.0,
-// 0.0, 2.0, 0.0, 
-// -1.0, 0.0, 1.0,
-
 1.0, 0.0, 1.0,
 0.0, 2.0, 0.0,
--1.0, 0.0, 1.0,
+-1.0, 0.0, 1.0
 
-// 1.0, 0.0, 1.0,
-// 0.0, 2.0, 0.0,
-// 1.0, 0.0, 1.0,
 ] );
 piramideBG.setAttribute( 'position', new THREE.BufferAttribute( verticesP, 3 ) );
-const materialP = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
+const materialP = new THREE.MeshPhongMaterial( { color: 0x0000ff, side:THREE.DoubleSide } );
+piramideBG.computeVertexNormals();
 piramide = new THREE.Mesh( piramideBG, materialP );
 piramide.castShadow = true;
 piramide.receiveShadow = true;
@@ -173,8 +164,8 @@ function render() {
 
   const elapsedTime = clock.getElapsedTime()
 
-  camera.position.x =2 //Math.cos(elapsedTime * 0.5) * 2;
-  camera.position.z =0 //Math.sin(elapsedTime * 0.5) * 2;
+  camera.position.x =2//Math.cos(elapsedTime * 0.5) * 2;
+  camera.position.z =0//Math.sin(elapsedTime * 0.5) * 2;
   camera.position.y = 0.5
 
 
