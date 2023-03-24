@@ -321,20 +321,18 @@ function validateForm(){
         //Поставить текст об ошибке в iError
         iError.hidden = false;
         iError.innerHTML += 'Пароль должен быть не менее 6 символов<br>';
-    
     } 
 
     //Проверить переменную iPass на наличие русских букв
     if(iPass.value.match(/[а-я]/)){
         iError.hidden = false;
-        iError.innerHTML += 'Пароль должен не должен содержать русские буквы<br>';
-        
+        iError.innerHTML += 'Пароль не должен содержать русские буквы<br>';    
     }
     
     //Проверить переменную iEmail на наличие адреса
     if(!iEmail.value.match(/[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)){
         iError.hidden = false;
-        iError.innerHTML += 'Почта должен содержать адрес электронной почты<br>';    
+        iError.innerHTML += 'Почта должна содержать адрес электронной почты<br>';    
     }
 
     //Собрать данные с формы и в консоль
