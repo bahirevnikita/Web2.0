@@ -77,17 +77,17 @@ const wallBG = new THREE.BufferGeometry();
 // create a simple square shape. We duplicate the top left and bottom right
 // vertices because each vertex needs to appear once per triangle.
 const vertices = new Float32Array( [
-	0.0, -1.0,  -1.0,
-	 0.0, -1.0,  1.0,
-	 0.0,  1.0,  1.0,
+	// 0.0, -1.0,  -1.0,
+	// 0.0, -1.0,  1.0,
+	// 0.0,  1.0,  1.0,
 
-	 0.0,  1.0,  1.0,
-	0.0,  1.0,  -1.0,
-	0.0, -1.0,  -1.0,
+	// 0.0,  1.0,  1.0,
+	// 0.0,  1.0,  -1.0,
+	// 0.0, -1.0,  -1.0,
 
-	 0.0,  1.0,  1.0,
-   0.0, -1.0,  1.0,
-   0.0, -1.0,  -1.0,
+	0.0,  1.0,  1.0,
+  0.0, -1.0,  1.0,
+  0.0, -1.0,  -1.0,
 
 	0.0, -1.0,  -1.0,
   0.0,  1.0,  -1.0,
@@ -97,7 +97,7 @@ const vertices = new Float32Array( [
 // itemSize = 3 because there are 3 values (components) per vertex
 wallBG.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
 wallBG.computeVertexNormals();
-const material = new THREE.MeshPhongMaterial( { color: 0x808080 } );
+const material = new THREE.MeshPhongMaterial( { color: 0x808080, side:THREE.DoubleSide} );
 wall = new THREE.Mesh( wallBG, material );
 wall.receiveShadow = true;
 wall.castShadow = true;
@@ -140,7 +140,7 @@ const verticesP = new Float32Array( [
 
 ] );
 piramideBG.setAttribute( 'position', new THREE.BufferAttribute( verticesP, 3 ) );
-const materialP = new THREE.MeshPhongMaterial( { color: 0x0000ff, side:THREE.DoubleSide } );
+const materialP = new THREE.MeshPhongMaterial( { color: 0x0000ff } ); //, side:THREE.DoubleSide
 piramideBG.computeVertexNormals();
 piramide = new THREE.Mesh( piramideBG, materialP );
 piramide.castShadow = true;
@@ -164,9 +164,9 @@ function render() {
 
   const elapsedTime = clock.getElapsedTime()
 
-  camera.position.x =2//Math.cos(elapsedTime * 0.5) * 2;
-  camera.position.z =0//Math.sin(elapsedTime * 0.5) * 2;
-  camera.position.y = 0.5
+  //camera.position.x =Math.cos(elapsedTime * 0.5) * 2;
+  camera.position.z =Math.sin(elapsedTime * 0.5) * 2;
+  //camera.position.y = 0.5
 
 
   camera.lookAt(cameraTarget);
