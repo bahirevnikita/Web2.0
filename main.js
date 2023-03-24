@@ -201,7 +201,11 @@ function object(){
         first_name: "Никита"
     };
 	keys = Object.keys(student);
-	return `Cписок свойств: ${Object.keys(student)[0]} ${Object.keys(student)[1]} ${Object.keys(student)[2]}
+	let propert = '';
+	for(key of keys){
+		propert += key + ' ';
+	}
+	return `Cписок свойств: ${propert}
 Студент ${student.first_name} ${student.last_name} ${student.group}`
 }
 function button_3(){
@@ -224,30 +228,43 @@ function getarr(){
     }
     let k =+prompt("Колличество случайных значений¹");
     for (let i=0;i<k;i++){
-        arr2.push(arr1[randomNumber(0,n)]);
+        arr2.push(arr1[randomNumber(0,n+1)]);
     }
     return arr2;
 }
 function button_5(){
-    
     console.log(getarr());
 }
 
+
+
+
+
+
+
+
+
+
 // Лаба 3
-const bSign = document.getElementById('sign_butt')
+const bSign = document.getElementById('sign_butt') //querySelector('body')
 const fSign = document.getElementById('sign_form')
 const bCancel = document.getElementById('cancel_butt')
 const bLogin = document.getElementById('login_butt')
 const bShowPass = document.getElementById('show_pass_butt')
 const iPass = document.getElementById('pass_input')
 const iEmail = document.getElementById('email_input')
+const body = document.querySelector('Body')
 
+function stopPropagation(event){
+	event.stopPropagation()
+}
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function toggleSignForm(){
-    if(fSign.hidden){ 
+async function toggleSignForm(event){
+    event.stopPropagation()
+	if(fSign.hidden){ 
         // Показываем
         fSign.hidden=false
         // Добавляем и удаляем класс чтобы проигралась анимация 
@@ -263,10 +280,26 @@ async function toggleSignForm(){
         await sleep(500); // Ждем 500 мс так как transition 0,5s
         fSign.hidden=true
     }
+	
 }
 
+async function closeSignForm(){
+    if(!fSign.hidden){ 
+        // Прячем
+        fSign.classList.add('sign_form_hidden')
+        await sleep(500); // Ждем 500 мс так как transition 0,5s
+        fSign.hidden=true
+    }
+}
+
+sign_form.addEventListener('click', (e) =>{
+    if(e.target === sign_form) sign_form.close()
+})
+
+fSign.addEventListener('click', stopPropagation)
 bCancel.addEventListener('click', toggleSignForm);
 bSign.addEventListener('click', toggleSignForm);
+body.addEventListener('click', closeSignForm);
 
 bShowPass.addEventListener('pointerdown', ()=>{
     iPass.setAttribute('type', 'text')
@@ -283,26 +316,25 @@ bLogin.addEventListener('click', (e)=>{
 
 function validateForm(){
     iError.hidden = true;
-    
+    iError.innerHTML = ''
     if(iPass.value.length < 6){
         //Поставить текст об ошибке в iError
         iError.hidden = false;
-        iError.innerText = 'Пароль должен быть не менее 6 символов';
-        return;
+        iError.innerHTML += 'Пароль должен быть не менее 6 символов<br>';
+    
     } 
 
     //Проверить переменную iPass на наличие русских букв
     if(iPass.value.match(/[а-я]/)){
         iError.hidden = false;
-        iError.innerText = 'Пароль должен не должен содержать русские буквы';
-        return;
+        iError.innerHTML += 'Пароль должен не должен содержать русские буквы<br>';
+        
     }
     
     //Проверить переменную iEmail на наличие адреса
     if(!iEmail.value.match(/[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)){
         iError.hidden = false;
-        iError.innerText = 'Почта должен содержать адрес электронной почты';
-        return;
+        iError.innerHTML += 'Почта должен содержать адрес электронной почты<br>';    
     }
 
     //Собрать данные с формы и в консоль
