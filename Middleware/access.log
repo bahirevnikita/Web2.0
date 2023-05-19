@@ -6,3 +6,4 @@
 ::ffff:127.0.0.1 - - [12/Apr/2023:19:23:05 +0000] "GET /stats HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15"
 ::ffff:127.0.0.1 - - [12/Apr/2023:19:23:06 +0000] "GET /secret HTTP/1.1" 400 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15"
 ::ffff:127.0.0.1 - - [12/Apr/2023:19:23:36 +0000] "GET /secret HTTP/1.1" 400 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15"
+::ffff:127.0.0.1 - - [21/Apr/2023:15:05:35 +0000] "GET /favicon.ico HTTP/1.1" 400 - "http://127.0.0.1:4003/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15"

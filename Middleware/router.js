@@ -1,11 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const comments = [{"id": 1, "text": "hello worlds"}, {"id": 2, "text": "hello worlds hello worlds"}];
+const comments = [{"id": 1, "text": "hello there"}, {"id": 2, "text": "hello worlds hello worlds"}];
 const stat = {};
-const morgan = require('morgan')
 const path = require('path')
 const fs = require('fs')
-const helmet = require('helmet')
 
 // middleware that is specific to this router
 router.use((req, res, next) => {
@@ -20,19 +18,10 @@ router.use((req, res, next) => {
     next()
 })
 
-router.use(helmet())
-router.use(helmet.hsts({
-    maxAge: 10886400000,
-    includeSubDomains: true,
-    preload: true,
-    force: true,
-}))
-
 // create a write stream (in append mode)
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
 
 // setup the logger
-router.use(morgan('combined', { stream: accessLogStream }))
 
 router.get("/form*", (req, res, next) => {
     if (req.query.login === ""){
