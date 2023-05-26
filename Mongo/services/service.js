@@ -1,5 +1,5 @@
 const { ObjectId } = require("mongodb");
-const db = require("../configs/configs");
+const db = require("../configs/config");
 
 async function insertDocDB(body){
   const usersCollection = await db.collection('users');
@@ -29,6 +29,23 @@ async function postcom(req,res){
   }
 }
 
+async function getcom(req,res){
+  const find = await findDocDB();
+  res.send(find);
+}
+
+async function getcomid(req, res){
+  let usid = req.params.id;
+  const result = await findOneDocDB(usid);
+      if(result === null){
+          res.status(404);
+          res.send('Error!');
+      }
+      else{
+          res.send(result);
+      }
+}
+
 
 async function insertGood(data) {
   const goods = db.collection("goods");
@@ -54,4 +71,7 @@ module.exports = {
   findGoods,
   findGood,
   insertGood,
+  postcom,
+  getcom,
+  getcomid,
 };
