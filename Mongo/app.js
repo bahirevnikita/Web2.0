@@ -46,7 +46,10 @@ app.use(
     swaggerUi.serve,
     swaggerUi.setup(specs, { explorer: true })
   );
-
+  
+app.get('/fetch', (req,res) => {
+  res.sendFile(__dirname + '/public/fetch.html')
+})
 
 app.use(morgan('dev'));
 app.use(helmet());
@@ -55,6 +58,7 @@ app.use(express.static('public'));
 app.use('/v1', restAPI);
 app.use('/db', dbAPI);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 
 
 app.use(function (err, req, res, next) {

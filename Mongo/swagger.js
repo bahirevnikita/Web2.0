@@ -314,6 +314,7 @@ const swaggerDefinition = {
                 }
             }
         },
+        schemes: ['http'],
         securitySchemes: {
             apiKey: {
                 type: "apiKey",
